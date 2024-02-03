@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>File Viewer</title>
+</head>
+<body>
+
+<input type="file" id="fileInput" onchange="handleFile()" accept="*/*">
+
+<script>
+    function handleFile() {
+        const fileInput = document.getElementById('fileInput');
+        const file = fileInput.files[0];
+
+        if (file) {
+            const reader = new FileReader();
+
+            reader.onload = function (e) {
+                const content = e.target.result;
+                console.log(content); // You can display or process the content as needed
+            };
+
+            reader.readAsText(file); // Use readAsDataURL for binary files
+        } else {
+            console.log("No file selected.");
+        }
+    }
+</script>
+
+</body>
+</html>
